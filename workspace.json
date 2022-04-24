@@ -1,6 +1,8 @@
 {
   "version": 2,
   "projects": {
+    "dock-ui": "libs/dock-ui",
+    "storybook-e2e-dock-ui-e2e": "apps/storybook-e2e/dock-ui-e2e",
     "web": "apps/web",
     "web-e2e": "apps/web-e2e"
   }
