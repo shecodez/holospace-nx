@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Button } from '@mantine/core';
 import { Icon } from '@iconify/react';
 
 import styles from './index.module.css';
@@ -38,12 +37,10 @@ export function Index() {
 
       <div className={styles.nextBtnContainer}>
         <Link href="/hello" passHref>
-          <Button component="a">
-            <div className="flex items-center gap-1">
-              <Icon icon="mdi-light:home" vFlip />
-              Next link button
-            </div>
-          </Button>
+          <div className="flex items-center gap-1">
+            <Icon icon="mdi-light:home" vFlip />
+            Next link button
+          </div>
         </Link>
       </div>
     </div>
