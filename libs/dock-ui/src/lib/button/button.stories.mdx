@@ -1,0 +1,143 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Icon } from '@iconify/react';
+
+import { Button } from './button';
+import { ButtonDemo } from './demo';
+
+<Meta title="Inputs &amp; Buttons/Button" component={Button} />
+
+# Button
+
+Render button with styles from HoloSpace Dock-UI theme
+
+# Demo
+
+<ButtonDemo />
+
+```
+import { Button } from '@holospace/dock-ui';
+
+function Demo() {
+  return (
+    <Button>Upload</Button>
+  );
+}
+```
+
+# Default
+
+<Canvas>
+  <Story name="Default">
+    <Button>Upload</Button>
+  </Story>
+</Canvas>
+
+# Variants
+
+Button supports the following variants: filled, light, outline, default, ghost and white:
+
+<Canvas>
+  <Story name="Variants">
+    <Button variant="filled">Filled variant</Button>
+    <Button variant="light">Light variant</Button>
+    <Button variant="outline">Outline variant</Button>
+    <Button variant="default">Default variant</Button>
+    <Button variant="ghost">Ghost variant</Button>
+  </Story>
+</Canvas>
+
+Default Button color is `primary`, to change color and variant pass `color` and `variant` props:
+
+````
+<Button color="accent" /> // filled button with theme.accent color
+<Button variant="outline" /> // outline button with theme.primary color ```
+````
+
+# White Variant
+
+When `variant="white"` the button background color is always white (both in light and dark themes) and color is controlled by the `color` prop:
+
+<Canvas>
+  <Story name="WhiteVariant">
+    <Button
+      leftIcon={<Icon icon="mdi:login" />}
+      variant="white"
+      color="primary"
+    >
+      Login
+    </Button>
+  </Story>
+</Canvas>
+
+# Loading State
+
+Button supports `isLoading` prop. In this state a [Loader]() component is added or replaces the left icon, and the button becomes disabled and dark overlay is added.
+
+<Canvas>
+  <Story name="LoadingState">
+    <Button leftIcon={<Icon icon="mdi:login" />} isLoading>
+      Login
+    </Button>
+  </Story>
+</Canvas>
+
+# State Color Buttons
+
+Button color can be set to the `theme.[state]` (state = "info", "success", "warning", "error"). The default button appearance is `varient="filled"`.
+
+<Canvas>
+  <Story name="StateColorButtons">
+    <Button color="info">Info</Button>
+    <Button color="success">Success</Button>
+    <Button color="warning">Warning</Button>
+    <Button color="error">Error</Button>
+  </Story>
+</Canvas>
+
+# Brand Color Buttons
+
+Button color can be set to the `theme.[brand]` (brand = "primary", "secondary", "accent", "light", "dark"). The default button appearance is `varient="filled"`.
+
+<Canvas>
+  <Story name="BrandColorButtons">
+    <Button color="dark">Dark</Button>
+    <Button>Primary</Button>
+    <Button color="secondary">Secondary</Button>
+    <Button color="accent">Accent</Button>
+    <Button color="light">Light</Button>
+  </Story>
+</Canvas>
+
+# Compact
+
+<Canvas>
+  <Story name="Compact">
+    <Button isCompact>compact filled button</Button>
+    <Button isCompact variant="light">
+      compact light button
+    </Button>
+    <Button isCompact variant="outline">
+      compact outline button
+    </Button>
+  </Story>
+</Canvas>
+
+# FullWidth and Overflow
+
+Button can take full width of container if you set `isFullWidth` prop. If the button is too large for its container, overflow content will be hidden:
+
+<Canvas>
+  <Story name="FullWidth">
+    <div style={{ width: 200 }}>
+      <Button isFullWidth variant="outline">
+        Full width button
+      </Button>
+    </div>
+    <div style={{ width: 140 }}>
+      <Button isFullWidth variant="outline">
+        Button with width overflow
+      </Button>
+    </div>
+    <Button isFullWidth>Yet another full width button</Button>
+  </Story>
+</Canvas>

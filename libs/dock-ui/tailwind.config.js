@@ -11,13 +11,7 @@ module.exports = {
   ],
   // darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {
-      colors: {
-        primary: '#F00',
-        secondary: '#0F0',
-        accent: '#00F',
-      },
-    },
+    extend: {},
   },
   plugins: [],
   presets: [require('../../tailwind-workspace-preset.js')],
