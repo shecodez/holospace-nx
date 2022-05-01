@@ -1,0 +1,93 @@
+.dui-text-input {
+  @apply relative inline-block;
+}
+
+.required .label:after {
+  content: " *";
+  @apply text-error-darker;
+}
+
+.disabled,
+.disabled * {
+  @apply grayscale cursor-not-allowed border-dotted;
+}
+
+.inner {
+  @apply flex h-full gap-1;
+}
+
+.left-node,
+.right-node {
+  @apply h-fit self-center;
+}
+
+.input-wrapper {
+  @apply relative h-full w-full;
+}
+.input-wrapper > input {
+  @apply bg-transparent h-full appearance-none focus:outline-none text-sm;
+}
+
+.dui-text-input input:focus-within ~ label,
+.dui-text-input .has-text input ~ label,
+.dui-text-input input:placeholder-shown ~ label {
+  transform: translate(-12%, -50%) scale(0.74);
+}
+
+.label {
+  @apply absolute top-0 left-0 translate-y-1/2 transform duration-300 whitespace-nowrap font-semibold;
+}
+
+span.hint {
+  @apply block text-xs font-semibold pt-1 text-gray-600;
+}
+
+.error {
+  @apply text-error-darker !border-error-darker;
+}
+span.error {
+  @apply block text-xs font-semibold pt-1;
+}
+
+.dui-text-input.var-filled {
+  @apply bg-black/10 rounded-b-none border-b-2 border-black/50;
+  @apply focus-within:border-primary-default focus-within:border-b-2;
+}
+
+.dui-text-input.var-outline {
+  @apply bg-transparent border-2 border-black/50;
+  @apply focus-within:border-primary-default focus-within:border-2;
+}
+.dui-text-input.var-outline:focus-within .label {
+  @apply px-2 bg-white;
+}
+
+.dui-text-input.var-ghost {
+  @apply bg-transparent border-2 border-transparent;
+  @apply focus-within:bg-black/10 focus-within:border-2;
+}
+
+.dui-text-input.var-default {
+  @apply bg-transparent border-b-2 rounded-none border-black/50 px-0;
+  @apply focus-within:border-primary-default focus-within:border-b-2;
+}
+
+.dui-text-input.var-filled:focus-within .label,
+.dui-text-input.var-outline:focus-within .label,
+.dui-text-input.var-ghost:focus-within .label,
+.dui-text-input.var-default:focus-within .label {
+  @apply text-primary-default;
+}
+
+/*
+.dui-text-input.var-filled {
+  @apply bg-black/10 rounded-b-none border-b;
+}
+.dui-text-input.var-filled::after {
+  content: "";
+  @apply block border-t border-black/50 w-full -my-1;
+}
+.dui-text-input.var-filled:focus-within::after {
+  @apply border-t-2 border-primary-default;
+}
+*/

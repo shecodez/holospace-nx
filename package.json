@@ -5,7 +5,9 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "build-storybook": "nx run dock-ui:build-storybook --output-dir dist/storybook/dock-ui",
+    "chromatic": "npx chromatic"
   },
   "private": true,
   "dependencies": {
@@ -50,6 +52,7 @@
     "@typescript-eslint/parser": "~5.18.0",
     "babel-jest": "27.5.1",
     "babel-loader": "8.1.0",
+    "chromatic": "^6.5.4",
     "cypress": "^9.1.0",
     "eslint": "~8.12.0",
     "eslint-config-next": "12.1.5",

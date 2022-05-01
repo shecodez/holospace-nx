@@ -2,72 +2,72 @@
   @apply border border-transparent flex items-center justify-center;
 }
 
-.dui-btn-compact {
+.compact {
   @apply scale-75;
 }
 
-.dui-btn-disabled {
+.disabled {
   @apply grayscale cursor-not-allowed;
 }
 
-.dui-btn-loading {
+.loading {
   @apply brightness-90 pointer-events-none;
 }
-.dui-btn-loading::before {
+.loading::before {
   content: "";
   border-radius: inherit;
   @apply absolute -inset-0.5 bg-gray-800 bg-opacity-50;
 }
 
-.dui-btn-inner {
+.inner {
   @apply flex items-center gap-2 overflow-hidden;
 }
 
-.dui-btn-label {
+.label {
   @apply text-sm font-medium whitespace-nowrap;
 }
 
-.dui-btn.dui-var-filled {
+.dui-btn.var-filled {
   @apply text-white bg-primary-default hover:brightness-125 shadow;
 }
-.dui-btn.dui-var-light {
+.dui-btn.var-light {
   @apply text-primary-light bg-primary-lightest bg-opacity-30 hover:brightness-125;
 }
-.dui-btn.dui-var-outline {
+.dui-btn.var-outline {
   @apply text-primary-default border border-primary-default hover:bg-primary-lighter hover:bg-opacity-30;
 }
-.dui-btn.dui-var-default {
+.dui-btn.var-default {
   @apply text-black dark:text-white bg-slate-200 dark:bg-slate-500 hover:brightness-125 shadow;
 }
-.dui-btn.dui-var-ghost {
+.dui-btn.var-ghost {
   @apply text-primary-light hover:bg-primary-lightest hover:bg-opacity-30;
 }
-.dui-btn.dui-var-white {
+.dui-btn.var-white {
   @apply text-primary-default bg-white shadow;
 }
 
-.dui-btn.dui-var-filled.dui-c-dark {
+.dui-btn.var-filled.c-dark {
   @apply bg-slate-900;
 }
-.dui-btn.dui-var-filled.dui-c-secondary {
+.dui-btn.var-filled.c-secondary {
   @apply bg-secondary-default;
 }
-.dui-btn.dui-var-filled.dui-c-accent {
+.dui-btn.var-filled.c-accent {
   @apply bg-accent-default;
 }
-.dui-btn.dui-var-filled.dui-c-light {
+.dui-btn.var-filled.c-light {
   @apply text-white bg-white bg-opacity-30;
 }
 
-.dui-btn.dui-var-filled.dui-c-info {
+.dui-btn.var-filled.c-info {
   @apply bg-info-default;
 }
-.dui-btn.dui-var-filled.dui-c-error {
+.dui-btn.var-filled.c-error {
   @apply bg-error-default;
 }
-.dui-btn.dui-var-filled.dui-c-success {
+.dui-btn.var-filled.c-success {
   @apply bg-success-default;
 }
-.dui-btn.dui-var-filled.dui-c-warning {
+.dui-btn.var-filled.c-warning {
   @apply bg-warning-default;
 }

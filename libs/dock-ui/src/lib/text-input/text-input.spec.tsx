@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import DockUi from './dock-ui';
+import TextInput from './text-input';
 
-describe('DockUi', () => {
+describe('TextInput', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<DockUi />);
+    const { baseElement } = render(<TextInput />);
     expect(baseElement).toBeTruthy();
   });
 });

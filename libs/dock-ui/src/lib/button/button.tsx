@@ -3,6 +3,29 @@ import { Icon } from '@iconify/react';
 
 import styles from './button.module.css';
 
+export const buttonRadii = [
+  'none',
+  'sm',
+  'rounded',
+  'md',
+  'lg',
+  'xl',
+  'full',
+] as const;
+export type ButtonRadius = typeof buttonRadii[number];
+export const buttonSizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+export type ButtonSize = typeof buttonSizes[number];
+export const buttonVariants = [
+  'filled',
+  'light',
+  'outline',
+  'default',
+  'ghost',
+  'white',
+] as const;
+export type ButtonVariant = typeof buttonVariants[number];
+export type ButtonType = 'button' | 'reset' | 'submit';
+
 /* eslint-disable-next-line */
 export interface ButtonProps {
   children?: ReactNode;
@@ -10,18 +33,18 @@ export interface ButtonProps {
   isCompact?: boolean;
   isDisabled?: boolean;
   isFullWidth?: boolean;
-  leftIcon?: ReactNode;
   isLoading?: boolean;
-  radius?: 'none' | 'sm' | 'rounded' | 'md' | 'lg' | 'xl' | 'full';
   isRatio1x1?: boolean;
-  rightIcon?: ReactNode;
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  type?: 'button' | 'reset' | 'submit';
   isUppercase?: boolean;
-  variant?: 'filled' | 'light' | 'outline' | 'default' | 'ghost' | 'white';
+  leftIcon?: ReactNode;
+  radius?: ButtonRadius;
+  rightIcon?: ReactNode;
+  size?: ButtonSize;
+  type?: ButtonType;
+  variant?: ButtonVariant;
 }
 
-function getPadding(size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'): string {
+function getPadding(size?: ButtonSize): string {
   if (!size) size = 'sm';
 
   switch (size) {
@@ -39,9 +62,7 @@ function getPadding(size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'): string {
   }
 }
 
-function getBorderRadius(
-  radius?: 'none' | 'sm' | 'rounded' | 'md' | 'lg' | 'xl' | 'full'
-): string {
+function getBorderRadius(radius?: ButtonRadius): string {
   if (!radius) return 'rounded';
 
   switch (radius) {
@@ -80,24 +101,25 @@ export function Button(props: ButtonProps) {
     ...rest
   } = props;
 
-  const twcss = ` ${getBorderRadius(radius)} 
-  ${isFullWidth && 'w-full'} ${isUppercase && 'uppercase'} 
-  ${getPadding(size)} ${isRatio1x1 && 'aspect-square'}`;
+  const twcss = `${getBorderRadius(radius)} ${isFullWidth && 'w-full'} ${
+    isUppercase && 'uppercase'
+  } ${getPadding(size)} ${isRatio1x1 && 'aspect-square'}`;
 
-  const duicss = `${styles['dui-btn']}
-  ${styles[`dui-var-${variant}`]} ${styles[`dui-c-${color}`]} 
-  ${isCompact && styles['dui-btn-compact']} 
-  ${isDisabled && styles['dui-btn-disabled']} 
-  ${isLoading && styles['dui-btn-loading']}`;
+  const duicss = `${styles['dui-btn']} ${styles[`var-${variant}`]} ${
+    styles[`c-${color}`]
+  } ${isCompact && styles['compact']} ${isDisabled && styles['disabled']} ${
+    isLoading && styles['loading']
+  }`;
 
   return (
     <button
       type={type}
-      className={`${twcss} ${duicss}`}
+      className={`${twcss} ${duicss}`.replace(/undefined/g, '').trim()}
       data-testid="dui-btn"
       {...rest}
     >
-      <div className={styles['dui-btn-inner']}>
+      <div className={styles['inner']}>
+        {/* TODO: replace with loading component */}
         {isLoading ? (
           <div className="animate-spin">
             <Icon icon="mdi:loading" />
@@ -106,7 +128,7 @@ export function Button(props: ButtonProps) {
           props.leftIcon
         )}
 
-        <span className={styles['dui-btn-label']}>{props.children}</span>
+        <span className={styles['label']}>{props.children}</span>
 
         {props.rightIcon}
       </div>

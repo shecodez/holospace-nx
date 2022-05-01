@@ -1,31 +1,30 @@
 import { useState } from 'react';
 
-import { Button } from './button';
+import {
+  Button,
+  buttonRadii,
+  ButtonRadius,
+  ButtonSize,
+  buttonSizes,
+  ButtonVariant,
+  buttonVariants,
+} from './button';
 
-type RadiusTypes = 'none' | 'sm' | 'rounded' | 'md' | 'lg' | 'xl' | 'full';
-type SizeTypes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-type VariantTypes =
-  | 'filled'
-  | 'light'
-  | 'outline'
-  | 'default'
-  | 'ghost'
-  | 'white';
 interface ButtonDemoProps {
   color: string;
   isCompact: boolean;
   isDisabled: boolean;
-  radius: RadiusTypes;
-  size: SizeTypes;
   isUppercase: boolean;
-  variant: VariantTypes;
+  radius: ButtonRadius;
+  size: ButtonSize;
+  variant: ButtonVariant;
 }
 
 export function ButtonDemo(props: ButtonDemoProps) {
-  const [variant, setVariant] = useState<VariantTypes>(props.variant);
+  const [variant, setVariant] = useState<ButtonVariant>(props.variant);
   const [color, setColor] = useState<string>(props.color);
-  const [radius, setRadius] = useState<RadiusTypes>(props.radius);
-  const [size, setSize] = useState<SizeTypes>(props.size);
+  const [radius, setRadius] = useState<ButtonRadius>(props.radius);
+  const [size, setSize] = useState<ButtonSize>(props.size);
   const [disabled, setDisabled] = useState<boolean>(props.isDisabled);
   const [compact, setCompact] = useState<boolean>(props.isCompact);
   const [uppercase, setUppercase] = useState<boolean>(props.isUppercase);
@@ -48,13 +47,14 @@ export function ButtonDemo(props: ButtonDemoProps) {
       </div>
 
       <div className="w-1/3 border-l">
-        {/* TODO: replace these with dock-ui components: select checkbox slider switch and inputField */}
+        {/* TODO: replace these with dock-ui components: select checkbox slider switch TextInput */}
         <aside className="flex flex-col gap-2 p-4">
           <div>
             <label>Variant</label>
             <select>
-              <option>filled</option>
-              <option>light</option>
+              {buttonVariants.map((x, i) => (
+                <li key={i}>{x}</li>
+              ))}
             </select>
           </div>
 
@@ -80,18 +80,18 @@ export function ButtonDemo(props: ButtonDemoProps) {
           <div>
             <label>Radius</label>
             <div className="flex">
-              <input type="radio" title="none" />
-              <input type="radio" title="sm" />
-              <input type="radio" checked title="rounded" />
+              {buttonRadii.map((x, i) => (
+                <input type="radio" key={i} title={x} checked={x === radius} />
+              ))}
             </div>
           </div>
 
           <div>
             <label>Size</label>
             <div className="flex">
-              <input type="radio" title="xs" />
-              <input type="radio" checked title="sm" />
-              <input type="radio" title="md" />
+              {buttonSizes.map((x, i) => (
+                <input type="radio" key={i} title={x} checked={x === size} />
+              ))}
             </div>
           </div>
 
@@ -103,7 +103,7 @@ export function ButtonDemo(props: ButtonDemoProps) {
           </div>
 
           <div>
-            <label>Is Compact</label>
+            <label>Is Disabled</label>
             <button onClick={() => setDisabled(!disabled)}>
               disabled: {disabled}
             </button>
@@ -118,7 +118,11 @@ export function ButtonDemo(props: ButtonDemoProps) {
 
           <div>
             <label>Text</label>
-            <input type="text" value={text} onChange={() => setText} />
+            <input
+              type="text"
+              value={text}
+              onChange={(e) => setText(e.currentTarget.value)}
+            />
           </div>
         </aside>
       </div>

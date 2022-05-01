@@ -1,0 +1,137 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Icon } from '@iconify/react';
+
+import { TextInput } from './text-input';
+import { TextInputDemo } from './demo';
+
+<Meta title="Inputs/TextInput" component={TextInput} />
+
+# TextInput
+
+Render input with styles from HoloSpace Dock-UI theme
+
+# Demo
+
+<TextInputDemo />
+
+```
+import { TextInput } from '@holospace/dock-ui';
+
+function Demo() {
+  return (
+    <TextInput
+      label="E-Mail"
+      placeholder="E-Mail Address"
+      isRequired
+    />
+  );
+}
+```
+
+# Default
+
+<Canvas>
+  <Story name="Default">
+    <TextInput label="E-Mail" placeholder="E-Mail Address" isRequired />
+  </Story>
+</Canvas>
+
+# Variants
+
+TextInput supports the following variants: default, filled, outline, and ghost:
+
+<Canvas>
+  <Story name="Variants">
+    <TextInput id="v-default" label="Default variant" variant="default" />
+    <TextInput id="v-filled" label="Filled variant" variant="filled" />
+    <TextInput id="c-outline" label="Outline variant" variant="outline" />
+    <TextInput id="v-ghost" label="Ghost variant" variant="ghost" />
+  </Story>
+</Canvas>
+
+Default TextInput active/focus color is `primary`, to change color and variant pass `color` and `variant` props:
+
+# Controlled
+
+```
+import { useState } from 'react';
+import { TextInput } from '@holospace/TextInput';
+
+function Demo() {
+  const [val, setVal] = useState('');
+  return <TextInput value={val} onChange={(evt) => setVal(evt.currentTarget.value)} />;
+}
+```
+
+# Error State
+
+- 1st Error as boolean: red error-border color
+- 2nd Error as React node: red error-border color and message below TextInput
+
+<Canvas>
+  <Story name="ErrorState">
+    <TextInput label="E-Mail" value="me@email.com" error />
+    <br />
+    <br />
+    <TextInput label="E-Mail" value="me@email.com" error="Invalid E-Mail" />
+  </Story>
+</Canvas>
+
+# Disabled State
+
+<Canvas>
+  <Story name="DisabledState">
+    <TextInput
+      label="Disabled - without value"
+      placeholder="E-Mail Address"
+      isDisabled
+    />
+    <TextInput label="Disabled - label only" isDisabled />
+    <TextInput label="Disabled - with value" value="me@email.com" isDisabled />
+  </Story>
+</Canvas>
+
+# With Left El(ement)
+
+<Canvas>
+  <Story name="WithLeftNode">
+    <TextInput
+      label="E-Mail"
+      placeholder="E-Mail Address"
+      leftNode={<Icon icon="mdi:at" />}
+    />
+  </Story>
+</Canvas>
+
+# With Right El(ement)
+
+<Canvas>
+  <Story name="WithRightNode">
+    <TextInput
+      label="E-Mail"
+      placeholder="E-Mail Address"
+      rightNode={
+        <div className="animate-spin">
+          <Icon icon="mdi:loading" />
+        </div>
+      }
+    />
+  </Story>
+</Canvas>
+
+# Accessibility
+
+Provide `aria-label` when you use TextInput component without a label for screen reader support:
+
+<Canvas>
+  <Story name="Accessibility">
+    <TextInput label="E-Mail" />
+    <TextInput aria-label="E-Mail" />
+  </Story>
+</Canvas>
+
+```
+<TextInput /> // -> not ok, input is not labeled
+<TextInput label="E-Mail" /> // -> ok, input and label is connected
+<TextInput aria-label="E-Mail" /> // -> also ok, label is not visible but will be announced by screen reader
+```
